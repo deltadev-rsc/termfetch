@@ -6,40 +6,44 @@ import Terminals.Kitty
 import Terminals.Ghostty
 
 -- Import not my modules 
-import System.Environment (getEnvironment)
-import System.Process (readProcess)
+import System.Environment (lookupEnv)
 import Data.List (isInfixOf)
 
-isTerminal :: String -> IO Bool
-isTerminal term = do
-    env <- getEnvironment
-    case lookup "TERM" env of
-        Just prog | term == "alacritty" && prog == "Alacritty" -> return True
-        _ -> return False
-    case term of
-        "kitty" -> checkProcessName "kitty"
-        "ghostty" -> checkProcessName "ghostty"
-        "weztern" -> checkProcessName "wezterm"
-        "konsole" -> checkProcessName "konsole"
-        _ -> return False
+data Terminal = Kitty | Alacritty | Ghostty | Unknown
+    deriving (Show, Eq)
 
-checkProcessName :: String -> IO Bool 
-checkProcessName term = do
-    psOutput <- readProcess "ps" ["-e"] ""
-    return $ isInfixOf term psOutput
-
-detectTerminal :: IO (Maybe String)
+detectTerminal :: IO Terminal 
 detectTerminal = do
-    terminals <- sequence
-        [ isTerminal "kitty"     >>= \b -> return $ if b then Just kitty else Nothing
-        , isTerminal "alacritty" >>= \b -> return $ if b then Just alacritty else Nothing
-        , isTerminal "ghostty"   >>= \b -> return $ if b then Just ghostty else Nothing
---        , isTerminal "wezterm"   >>= \b -> return $ if b then Just "wezterm" else Nothing
---        , isTerminal "konsole"   >>= \b -> return $ if b then Just "konsole" else Nothing
-        ]
+    maybeTerm <- lookupEnv "TERM"
+    maybeKittyPid <- lookupEnv "KITTY_PID"
 
-    return $ head $ filter (/= Nothing) terminals
+    return $ case maybeTerm of 
+        Just t | "kitty" `isInfixOf` t -> Kitty 
+        Just t | "alacritty" `isInfixOf` t -> Alacritty 
+        Just t | "ghostty" `isInfixOf` t -> Ghostty
+        _ -> case maybeKittyPid of 
+            Just _ -> Kitty 
+            Nothing -> Unknown
+
+runKitty :: IO ()
+runKitty = do kitty 
+
+runAlacritty :: IO ()
+runAlacritty = do alacritty
+
+runGhostty :: IO ()
+runGhostty = do ghostty 
+
+runGeneric :: IO ()
+runGeneric = do putStrLn "sdfsdfsdfswerwefsdghfghfa"
+
+executeFeature :: Terminal -> IO ()
+executeFeature Kitty     = runKitty
+executeFeature Alacritty = runAlacritty
+executeFeature Ghostty   = runGhostty
+executeFeature Unknown   = runGeneric
 
 main :: IO ()
 main = do
-    detectTerminal "kitty"
+    term <- detectTerminal
+    executeFeature term 
