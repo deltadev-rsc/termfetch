@@ -1,13 +1,13 @@
 module Terminals.Kitty where
 
 reset :: String
-red :: String 
-green :: String 
+red :: String
+green :: String
 yellow :: String
-blue :: String 
-magenta :: String 
-cyan :: String 
-orange :: String 
+blue :: String
+magenta :: String
+cyan :: String
+orange :: String
 
 reset = "\x1b[0m"
 black = "\x1b[30m"
@@ -23,15 +23,15 @@ white = "\x1b[79m"
 kitty :: IO ()
 kitty = do
     putStrLn ""
-    putStrLn (white ++ " ███████████████████████████████████████ Name: " ++ reset ++ "Kitty" )
-    putStrLn (white ++ " █                                     █ Type: " ++ reset ++ "GPU accelerated" )
-    putStrLn (white ++ " █ █▙      █   █ █ █████ █████ █     █ █ Crossplatfom: " ++ reset ++ "Linux, MacOS, Windows, FreeBSD, NetBSD, OpenBSD" )
-    putStrLn (white ++ " █  █▙     █  █  █   █     █    █   █  █ Configuring: "  ++ reset ++ "From configuration files" )
-    putStrLn (white ++ " █    █▙   █ █   █   █     █     █ █   █ Nerd Fonts support: " ++ reset ++ "true" )
-    putStrLn (white ++ " █     ██  ██    █   █     █      █    █ ANSI support: " ++ reset ++ "true")
-    putStrLn (white ++ " █    █▛   █ █   █   █     █      █    █ 256 colors support: " ++ reset ++ "true" )
-    putStrLn (white ++ " █  █▛     █  █  █   █     █      █    █ " )
-    putStrLn (white ++ " █ █▛      █   █ █   █     █      █    █ " )
-    putStrLn (white ++ " █                                     █ " )
-    putStrLn (white ++ " ███████████████████████████████████████ " )
+    putStrLn (white ++ " ████████████████████████████████████████ Name: " ++ reset ++ "Kitty" )
+    putStrLn (white ++ " █                                      █ Type: " ++ reset ++ "GPU accelerated" )
+    putStrLn (white ++ " █ ▜█▙      █   █ █ █████ █████ █     █ █ Crossplatfom: " ++ reset ++ "Linux, MacOS, Windows, FreeBSD, NetBSD, OpenBSD" )
+    putStrLn (white ++ " █  ▜█▙     █  █  █   █     █    █   █  █ Configuring: "  ++ reset ++ "From configuration files" )
+    putStrLn (white ++ " █   ▜█▙    █ █   █   █     █     █ █   █ Nerd Fonts support: " ++ reset ++ "true" )
+    putStrLn (white ++ " █    ███   ██    █   █     █      █    █ ANSI support: " ++ reset ++ "true")
+    putStrLn (white ++ " █   ▟█▛    █ █   █   █     █      █    █ 256 colors support: " ++ reset ++ "true" )
+    putStrLn (white ++ " █  ▟█▛     █  █  █   █     █      █    █ " )
+    putStrLn (white ++ " █ ▟█▛      █   █ █   █     █      █    █ " )
+    putStrLn (white ++ " █                                      █ " )
+    putStrLn (white ++ " ████████████████████████████████████████ " )
     putStrLn ""
