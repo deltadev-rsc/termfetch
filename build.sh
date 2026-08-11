@@ -1,4 +1,4 @@
 cd src/
-ghc Main.hs -o ../bin/main 
 mkdir -p ../bin/
+ghc Main.hs -o ../bin/main 
 ../bin/main
