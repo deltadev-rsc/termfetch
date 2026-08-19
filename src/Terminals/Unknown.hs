@@ -26,7 +26,7 @@ unknown = do
     putStrLn (white ++ " █████████████████████████████████ Name: " ++ reset ++ "Unknown" )
     putStrLn (white ++ " █                               █ Type: " ++ reset ++ "Generic" )
     putStrLn (white ++ " █  ▜█▙                          █ Crossplatfom: " ++ reset ++ "Linux" )
-    putStrLn (white ++ " █   ▜█▙                         █ Configuring: "  ++ reset ++ "From configuration files" )
+    putStrLn (white ++ " █   ▜█▙                         █ Configuring: "  ++ reset ++ "idk" )
     putStrLn (white ++ " █    ▜█▙                        █ Nerd Fonts support: " ++ reset ++ "true" )
     putStrLn (white ++ " █     ███                       █ ANSI support: " ++ reset ++ "true")
     putStrLn (white ++ " █    ▟█▛                        █ 256 colors support: " ++ reset ++ "true" )
