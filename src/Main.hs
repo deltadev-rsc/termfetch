@@ -5,12 +5,17 @@ import Terminals.Alacritty
 import Terminals.Kitty
 import Terminals.Ghostty
 import Terminals.Unknown
+import Terminals.WezTerm
 
 -- Import not my modules
 import System.Environment (lookupEnv)
 import Data.List (isInfixOf)
 
-data Terminal = Kitty | Alacritty | Ghostty | Unknown
+data Terminal =
+    Kitty     |
+    Alacritty |
+    Ghostty   |
+    WezTerm   | Unknown
     deriving (Show, Eq)
 
 detectTerminal :: IO Terminal
@@ -22,6 +27,7 @@ detectTerminal = do
         Just t | "kitty" `isInfixOf` t -> Kitty
         Just t | "alacritty" `isInfixOf` t -> Alacritty
         Just t | "ghostty" `isInfixOf` t -> Ghostty
+        Just t | "wezterm" `isInfixOf` t -> WezTerm
         _ -> case maybeKittyPid of
             Just _ -> Kitty
             Nothing -> Unknown
@@ -38,13 +44,17 @@ runGhostty = do ghostty
 runGeneric :: IO ()
 runGeneric = do unknown
 
-executeFeature :: Terminal -> IO ()
-executeFeature Kitty     = runKitty
-executeFeature Alacritty = runAlacritty
-executeFeature Ghostty   = runGhostty
-executeFeature Unknown   = runGeneric
+runWezTerm :: IO ()
+runWezTerm = do wezterm
+
+executeTerminal :: Terminal -> IO ()
+executeTerminal Kitty     = runKitty
+executeTerminal Alacritty = runAlacritty
+executeTerminal Ghostty   = runGhostty
+executeTerminal Unknown   = runGeneric
+executeTerminal WezTerm   = runWezTerm
 
 main :: IO ()
 main = do
     term <- detectTerminal
-    executeFeature term
+    executeTerminal term
