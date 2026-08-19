@@ -30,7 +30,7 @@ kitty = do
     putStrLn (white ++ " █   ▜█▙    █ █   █   █     █     █ █   █ Nerd Fonts support: " ++ reset ++ "true" )
     putStrLn (white ++ " █    ███   ██    █   █     █      █    █ ANSI support: " ++ reset ++ "true")
     putStrLn (white ++ " █   ▟█▛    █ █   █   █     █      █    █ 256 colors support: " ++ reset ++ "true" )
-    putStrLn (white ++ " █  ▟█▛     █  █  █   █     █      █    █ " )
+    putStrLn (white ++ " █  ▟█▛     █  █  █   █     █      █    █ Config file type: " ++ reset ++ "Kitty config format" )
     putStrLn (white ++ " █ ▟█▛      █   █ █   █     █      █    █ " )
     putStrLn (white ++ " █                                      █ " )
     putStrLn (white ++ " ████████████████████████████████████████ " )
