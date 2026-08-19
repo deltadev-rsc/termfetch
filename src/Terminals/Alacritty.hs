@@ -28,7 +28,7 @@ alacritty = do
     putStrLn (orange ++ "    ▟█▛  ▟██▙  ▜█▙       Nerd Fonts support: " ++ reset ++ "true" )
     putStrLn (orange ++ "   ▟█▛ ▟█▛  ▜█▙ ▜█▙      ANSI support: "       ++ reset ++ "true")
     putStrLn (orange ++ "  ▟█▛ ███    ███ ▜█▙     256 colors support: " ++ reset ++ "true" )
-    putStrLn (orange ++ " ▟█▛   ▜▙    ▟▛   ▜█▙    " )
+    putStrLn (orange ++ " ▟█▛   ▜▙    ▟▛   ▜█▙    Config file type: " ++ reset ++ "TOML" )
     putStrLn (orange ++ "▟█▛     ▜▙  ▟▛     ▜█▙   " )
     putStrLn (orange ++ "         ▜██▛            " )
     putStrLn (orange ++ "          ▜▛             " )
